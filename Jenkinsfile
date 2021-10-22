@@ -24,7 +24,7 @@ pipeline {
 				ok "Yes"
 			}
 			steps {
-				sh 'pip install -r requirements.txt'
+				sh 'pip install -r requirements.txt --user'
 				sh 'python fetch_place.py dev.rbxl "$DEV_PID" "$AUTH_COOKIE"'
 			}
 			post {
