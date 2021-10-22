@@ -11,7 +11,7 @@ universe_id = sys.argv[2] # 123456789
 place_id = sys.argv[3] # 7795117711
 auth_key = sys.argv[4] # abcdefg
 
-url = f"https://apis.roblox.com/universes/v1/${universe_id}/places/${place_id}/versions"
+url = f"https://apis.roblox.com/universes/v1/{universe_id}/places/{place_id}/versions"
 
 def main():
 	with open(filename, 'rb') as place:
