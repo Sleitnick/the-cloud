@@ -33,6 +33,7 @@ pipeline {
 			post {
 				success {
 					archiveArtifacts artifacts: 'dev.rbxl'
+					archiveArtifacts artifacts: 'dev.json'
 				}
 			}
 		}
