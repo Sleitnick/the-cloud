@@ -6,19 +6,19 @@ pipeline {
 			args '-v /tmp:/tmp'
 		}
 	}
+	environment {
+		DEV_PID = '7795117711'
+		DEV_UID = '3020561179'
+		QA_PID = '7795118564'
+		QA_UID = '3020561179'
+		STAGING_PID = '7795119762'
+		STAGING_UID = '3020561179'
+		PROD_PID = '7794562029'
+		PROD_UID = '3020561179'
+		AUTH_COOKIE = credentials('auth-cookie')
+		AUTH_KEY = credentials('auth-key')
+	}
 	stages {
-		environment {
-			DEV_PID = '7795117711'
-			DEV_UID = '3020561179'
-			QA_PID = '7795118564'
-			QA_UID = '3020561179'
-			STAGING_PID = '7795119762'
-			STAGING_UID = '3020561179'
-			PROD_PID = '7794562029'
-			PROD_UID = '3020561179'
-			AUTH_COOKIE = credentials('auth-cookie')
-			AUTH_KEY = credentials('auth-key')
-		}
 		stage('Deploy Dev -> QA') {
 			input {
 				message "Deploy to QA?"
