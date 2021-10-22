@@ -27,6 +27,7 @@ pipeline {
 				withEnv(["HOME=${env.WORKSPACE}"]) {
 					sh 'pip install -r requirements.txt --user'
 					sh 'python fetch_place.py dev.rbxl "$DEV_PID" "$AUTH_COOKIE"'
+					sh 'python publish_place.py dev.rbxl "$QA_UID" "$QA_PID" "$AUTH_KEY"'
 				}
 			}
 			post {
