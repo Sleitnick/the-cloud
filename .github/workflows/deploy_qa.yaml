@@ -10,7 +10,7 @@ on:
 
 jobs:
   call-workflow:
-    uses: ./github/workflows/deploy.yaml@main
+    uses: ./.github/workflows/deploy.yaml@main
     with:
       from_pid: "7795117711"
       from_uid: "3020561179"
