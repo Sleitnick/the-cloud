@@ -1,0 +1,49 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      from_pid:
+        required: true
+        type: string
+      from_uid:
+        required: true
+        type: string
+      to_pid:
+        required: true
+        type: string
+      to_uid:
+        required: true
+        type: string
+    secrets:
+      from_key:
+        required: true
+      to_key:
+        required: true
+      auth_cookie:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+          architecture: 'x64'
+      - run: |
+					pip install -r requirements.txt --user
+      - name: Publish
+        shell: bash
+        env:
+          FROM_PID: ${{ inputs.from_pid }}
+          FROM_UID: ${{ inputs.from_uid }}
+          FROM_KEY: ${{ secrets.from_key }}
+          TO_PID: ${{ inputs.to_pid }}
+          TO_UID: ${{ inputs.to_uid }}
+          TO_KEY: ${{ secrets.to_key }}
+          AUTH_COOKIE: ${{ secrets.auth_cookie }}
+        run: |
+					python fetch_place.py dev.rbxl "$FROM_PID" "$AUTH_COOKIE"
+					python publish_place.py dev.rbxl "$TO_UID" "$TO_PID" "$TO_KEY"

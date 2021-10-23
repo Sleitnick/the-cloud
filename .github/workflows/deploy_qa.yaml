@@ -1,0 +1,22 @@
+name: Deploy to QA
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_message:
+        description: 'Deployment Message'
+        required: true
+        default: ''
+
+jobs:
+  call-workflow:
+    uses: ./github/actions/deploy@v1
+    with:
+      from_pid: "7795117711"
+      from_uid: "3020561179"
+      to_pid: "7795118564"
+      to_uid: "3020561179"
+    secrets:
+      from_key: ${{ secrets.DEV_KEY }}
+      to_key: ${{ secrets.QA_KEY }}
+      auth_cookie: ${{ secrets.AUTH_COOKIE }}
