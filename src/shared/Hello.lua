@@ -1,3 +1,3 @@
 return function()
-	print("Hello world! Jenkins test")
+	print("Hello world!")
 end
