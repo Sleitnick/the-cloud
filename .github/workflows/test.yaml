@@ -1,0 +1,14 @@
+on:
+  workflow_dispatch:
+    inputs:
+      something:
+        description: 'Type something in'
+        required: true
+        default: 'nothing'
+
+jobs:
+  printOutInputs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Something: ${{ github.events.inputs.something }}"
