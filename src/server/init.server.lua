@@ -1,3 +1,3 @@
 print("Hello world, from server!")
 
-print("Hello from Jenkins, maybe?")
+print("Hello from Jenkins?")
