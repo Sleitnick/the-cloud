@@ -34,7 +34,7 @@ jobs:
           architecture: 'x64'
       - name: Install
         run: |
-					pip install -r requirements.txt
+          pip install -r requirements.txt
       - name: Publish
         shell: bash
         env:
@@ -46,5 +46,5 @@ jobs:
           TO_KEY: ${{ secrets.to_key }}
           AUTH_COOKIE: ${{ secrets.auth_cookie }}
         run: |
-					python fetch_place.py dev.rbxl "$FROM_PID" "$AUTH_COOKIE"
-					python publish_place.py dev.rbxl "$TO_UID" "$TO_PID" "$TO_KEY"
+          python fetch_place.py dev.rbxl "$FROM_PID" "$AUTH_COOKIE"
+          python publish_place.py dev.rbxl "$TO_UID" "$TO_PID" "$TO_KEY"
